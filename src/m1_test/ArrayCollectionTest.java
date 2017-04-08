@@ -1,11 +1,4 @@
-package m1test;
-
-import org.junit.Test;
-
-import java.util.Collection;
-import java.util.Iterator;
-
-import static org.junit.Assert.*;
+package m1_test;
 
 import org.junit.Test;
 

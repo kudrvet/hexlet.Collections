@@ -1,4 +1,4 @@
-package m1e5;
+package m1e5_arrayCollection;
 
 import org.junit.Test;
 

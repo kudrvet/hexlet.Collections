@@ -1,8 +1,11 @@
-package m1e5;
+package m1_test;
 
 import java.util.Collection;
-import java.util.NoSuchElementException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+
+import java.util.Arrays;
 
 public class ArrayCollection<T> implements Collection<T> {
 
@@ -41,8 +44,16 @@ public class ArrayCollection<T> implements Collection<T> {
     }
 
     @Override
-    public <T1> T1[] toArray(T1[] a) {
-        return (T1[])this.toArray();
+    public <T1> T1[] toArray(final T1[] a) {
+        // BEGIN (write your solution here)
+        if (size()<=a.length ) {
+             System.arraycopy(m,0,a,0,size());
+             return a;
+        }
+        else {
+            return (T1[])Arrays.copyOf(this.m,this.size(),a.getClass());
+        }
+       // END
     }
 
     @Override
@@ -108,18 +119,18 @@ public class ArrayCollection<T> implements Collection<T> {
     private void remove(final int index) {
         if (index != this.size() - 1)
             System.arraycopy(m, index + 1, m, index, this.size() - index - 1);
-        if (this.size() != 0) { //fix
-            size--;
-        }
+        size--;
     }
 
     private class ElementsIterator implements Iterator<T> {
+
         private int index;
 
         private int last = -1;
+
         @Override
         public boolean hasNext() {
-            return size()>index;
+            return ArrayCollection.this.size() > index;
         }
 
         @Override
@@ -137,9 +148,9 @@ public class ArrayCollection<T> implements Collection<T> {
             index--;
             last = -1;
         }
-        // BEGIN (write your solution here)
 
-        // END
     }
 
+
 }
+
